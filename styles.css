@@ -1,0 +1,103 @@
+
+:root{
+  --brand-primary:#1458D6; /* main color */
+  --brand-accent:#00C2A8;  /* secondary */
+  --brand-text:#111111;
+  --brand-bg:#FFFFFF;
+  color-scheme: light dark;
+}
+
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  background: var(--brand-bg);
+  color: var(--brand-text);
+}
+
+/* Nav */
+header{
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  z-index: 10;
+}
+.nav{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: .75rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav .logo{
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--brand-text);
+}
+.nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+.nav a{
+  color: var(--brand-text);
+  text-decoration: none;
+}
+.nav a:hover{ color: var(--brand-primary); }
+.nav button{
+  border: none; background: var(--brand-accent); color: #fff;
+  padding: .5rem .75rem; border-radius: .4rem; cursor: pointer;
+}
+
+/* Hero */
+#hero{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+}
+#hero h1{ font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .75rem; }
+.cta{
+  display:inline-block; margin-top:1rem; padding:.75rem 1rem;
+  background:var(--brand-primary); color:#fff; border-radius:.5rem; text-decoration:none;
+}
+.cta:hover{ opacity:.9; }
+
+/* Main sections */
+main{ max-width: 1200px; margin: 0 auto; padding: 1rem; }
+section{ margin: 2rem 0; }
+.cards{
+  display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;
+}
+.card{ border:1px solid #eee; border-radius:.5rem; padding:1rem; }
+
+/* Docs search */
+.searchbar{ display:flex; gap:.5rem; margin:1rem 0; }
+.searchbar input{
+  flex:1; padding:.6rem .75rem; border:1px solid #ccc; border-radius:.4rem;
+}
+.searchbar button{
+  padding:.6rem .75rem; border:none; background:var(--brand-accent);
+  color:#fff; border-radius:.4rem; cursor:pointer;
+}
+.results{ display:grid; gap:.75rem; margin-top:1rem; }
+.result{ border:1px solid #eee; padding:.75rem; border-radius:.4rem; }
+.result a{ color: var(--brand-primary); text-decoration: none; }
+
+/* Footer */
+footer{
+  border-top:1px solid #eee; padding:1rem; text-align:center; color:#666;
+}
+
+@media (prefers-color-scheme: dark){
+  header{ background:#121212; border-color:#222; }
+  body{ background:#0b0b0b; color:#ddd; }
+  .card,.result{ border-color:#222; }
+}
