@@ -1,0 +1,279 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Acme Pvt Ltd — Starter Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Security (strict meta CSP; place before any <link>/<script>) -->
+  <meta http-equiv="Content-Security-Policy"
+        content="
+          default-src 'self';
+          script-src 'self';
+          style-src 'self';
+          img-src 'self' data:;
+          font-src 'self';
+          connect-src 'self';
+          object-src 'none';
+          base-uri 'none';
+          frame-ancestors 'none';
+          form-action 'self';
+          upgrade-insecure-requests;
+        " />
+  <meta name="referrer" content="no-referrer" />
+
+  <!-- Styles (you can move to /assets/css/styles.css later) -->
+  <style>
+    :root{
+      --brand-primary:#1458D6; /* main color */
+      --brand-accent:#00C2A8;  /* secondary */
+      --brand-text:#111111;
+      --brand-bg:#FFFFFF;
+      color-scheme: light dark;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      background:var(--brand-bg); color:var(--brand-text);
+    }
+
+    /* Nav */
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee;z-index:10}
+    .nav{max-width:1200px;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between}
+    .nav .logo{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;text-decoration:none;color:var(--brand-text)}
+    .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1rem}
+    .nav a{color:var(--brand-text);text-decoration:none}
+    .nav a:hover{color:var(--brand-primary)}
+    .nav button{
+      border:none;background:var(--brand-accent);color:#fff;padding:.5rem .75rem;border-radius:.4rem;cursor:pointer
+    }
+
+    /* Hero */
+    #hero{max-width:1200px;margin:0 auto;padding:3rem 1rem}
+    #hero h1{font-size:clamp(2rem,4vw,3rem);margin:0 0 .75rem}
+    .cta{display:inline-block;margin-top:1rem;padding:.75rem 1rem;background:var(--brand-primary);color:#fff;border-radius:.5rem;text-decoration:none}
+    .cta:hover{opacity:.9}
+
+    /* Main sections */
+    main{max-width:1200px;margin:0 auto;padding:1rem}
+    section{margin:2rem 0}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .card{border:1px solid #eee;border-radius:.5rem;padding:1rem}
+
+    /* Docs search */
+    .searchbar{display:flex;gap:.5rem;margin:1rem 0}
+    .searchbar input{flex:1;padding:.6rem .75rem;border:1px solid #ccc;border-radius:.4rem}
+    .searchbar button{padding:.6rem .75rem;border:none;background:var(--brand-accent);color:#fff;border-radius:.4rem;cursor:pointer}
+    .results{display:grid;gap:.75rem;margin-top:1rem}
+    .result{border:1px solid #eee;padding:.75rem;border-radius:.4rem}
+    .result a{color:var(--brand-primary);text-decoration:none}
+
+    /* Footer */
+    footer{border-top:1px solid #eee;padding:1rem;text-align:center;color:#666}
+
+    @media (prefers-color-scheme: dark){
+      header{background:#121212;border-color:#222}
+      body{background:#0b0b0b;color:#ddd}
+      .card,.result{border-color:#222}
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav" aria-label="Main">
+      #hero
+        <svg width="28" height="28" viewBox="0 0 64 64" aria-hidden="true">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#1458D6"/><stop offset="100%" stop-color="#00C2A8"/>
+            </linearGradient>
+          </defs>
+          <rect x="4" y="4" width="56" height="56" rx="12" fill="url(#g)"></rect>
+        </svg>
+        Acme Pvt Ltd
+      </a>
+      <ul>
+        <li><aeroHome</a></li>
+        <li>#aboutAbout</a></li>
+        <li>#servicesServices</a></li>
+        <li>#docsDocs</a></li>
+        <li>#contactContact</a></li>
+      </ul>
+      <button id="themeToggle" aria-label="Toggle dark mode">🌓</button>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <h1>Modern Solutions for Your Business</h1>
+    <p>We design and deliver robust systems so you can focus on growth.</p>
+    #docsExplore the docs →</a>
+  </section>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>Acme Pvt Ltd provides consulting, engineering, and support for cloud‑native products.</p>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Consulting</h3>
+          <p>Architecture reviews, roadmap planning, and delivery management.</p>
+        </article>
+        <article class="card">
+          <h3>Implementation</h3>
+          <p>Frontend & backend development, integrations, and automation.</p>
+        </article>
+        <article class="card">
+          <h3>Support</h3>
+          <p>Monitoring, SLAs, and long‑term maintenance.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="docs" aria-labelledby="docs-title">
+      <h2 id="docs-title">Documentation</h2>
+      <p>Find product guides, onboarding, and FAQs.</p>
+
+      <div class="searchbar">
+        <input id="q" type="search" placeholder="Search docs…" aria-label="Search docs" />
+        <button id="searchBtn" aria-label="Run search">Search</button>
+      </div>
+
+      <div class="results" id="results" aria-live="polite"></div>
+
+      <h3>Browse</h3>
+      <ul>
+        <li>#doc-getting-startedGetting Started</a></li>
+        <li>#doc-faqFAQ</a></li>
+        <li>#doc-deploymentDeployment</a></li>
+      </ul>
+
+      <article id="doc-getting-started" class="card" style="margin-top:1rem">
+        <h3>Getting Started</h3>
+        <p>Welcome! This guide helps you set up the project locally and understand the layout.</p>
+        <h4>Prerequisites</h4>
+        <ul>
+          <li>Git</li>
+          <li>Any static server (optional for local testing)</li>
+        </ul>
+      </article>
+
+      <article id="doc-faq" class="card">
+        <h3>FAQ</h3>
+        <h4>What is this site?</h4>
+        <p>A starter static site for company information and documentation.</p>
+        <h4>Can I add more pages?</h4>
+        <p>Yes. Add more sections below or split docs into separate pages later.</p>
+      </article>
+
+      <article id="doc-deployment" class="card">
+        <h3>Deployment</h3>
+        <ol>
+          <li>Commit and push your changes to GitHub.</li>
+          <li>Use GitHub Pages (or any static host) to serve <code>index.html</code>.</li>
+          <li>Enforce HTTPS and set your custom domain if needed.</li>
+        </ol>
+      </article>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: info@example.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <small>© <span id="year"></span> Acme Pvt Ltd</small>
+  </footer>
+
+  <script>
+    (function(){
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const btn = document.getElementById('themeToggle');
+      btn?.addEventListener('click', () => {
+        const dark = document.documentElement.classList.toggle('dark');
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      });
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const input   = document.getElementById('q');
+      const btn     = document.getElementById('searchBtn');
+      const results = document.getElementById('results');
+
+
+      const index = [
+        {
+          title: "Getting Started",
+          url: "#doc-getting-started",
+          summary: "Set up the project locally and understand the layout.",
+          content: "Welcome! This guide helps you set up the project locally and understand the layout. Prerequisites: Git and a static server."
+        },
+        {
+          title: "FAQ",
+          url: "#doc-faq",
+          summary: "Common questions about the starter site.",
+          content: "Starter static site for company information and documentation. Add more sections or split into pages."
+        },
+        {
+          title: "Deployment",
+          url: "#doc-deployment",
+          summary: "Steps to publish to GitHub Pages with HTTPS.",
+          content: "Commit and push to GitHub. Serve index.html. Enforce HTTPS and configure custom domain."
+        }
+      ];
+
+      function escapeHtml(s){
+        return s.replace(/[&<>\"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+      }
+      function highlight(text, q){
+        const i = text.toLowerCase().indexOf(q.toLowerCase());
+        if (i === -1) return escapeHtml(text);
+        return escapeHtml(text.slice(0,i)) + '<mark>' + escapeHtml(text.slice(i,i+q.length)) + '</mark>' + escapeHtml(text.slice(i+q.length));
+      }
+
+      function runSearch(){
+        const q = (input?.value || '').trim();
+        results.innerHTML = '';
+        if (!q) return;
+
+        const hits = index.filter(x =>
+          x.title.toLowerCase().includes(q.toLowerCase()) ||
+          x.content.toLowerCase().includes(q.toLowerCase())
+        );
+        if (hits.length === 0){
+          results.innerHTML = '<p>No results.</p>';
+          return;
+        }
+        const frag = document.createDocumentFragment();
+        hits.forEach(m => {
+          const div = document.createElement('div');
+          div.className = 'result';
+          div.innerHTML = `${m.url}<strong>${highlight(m.title,q)}</strong></a><p>${highlight(m.summary || m.content,q)}</p>`;
+          frag.appendChild(div);
+        });
+        results.appendChild(frag);
+      }
+
+      btn?.addEventListener('click', runSearch);
+      input?.addEventListener('keydown', e => { if (e.key === 'Enter') runSearch(); });
+    })();
+  </script>
+
+</body>
+</html>
