@@ -1,37 +1,59 @@
 
+/* =========
+   Base Theme
+   ========= */
 :root{
   --brand-primary:#1458D6; /* main color */
   --brand-accent:#00C2A8;  /* secondary */
   --brand-text:#111111;
   --brand-bg:#FFFFFF;
+
+  /* Neutrals */
+  --border:#eeeeee;
+  --muted:#666666;
+
+  /* Elevation & radius */
+  --radius: .5rem;
+  --radius-sm: .4rem;
+
   color-scheme: light dark;
 }
 
 *{ box-sizing: border-box; }
-html,body{ margin:0; padding:0; }
-
+html, body{ margin:0; padding:0; }
 body{
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   background: var(--brand-bg);
   color: var(--brand-text);
+  line-height: 1.5;
 }
 
-/* Nav */
+/* Provide a focus style for keyboard users */
+:focus-visible{
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}
+
+/* =========
+   Header / Nav
+   ========= */
 header{
   position: sticky;
   top: 0;
-  background: #fff;
-  border-bottom: 1px solid #eee;
   z-index: 10;
+  background: #fff;
+  border-bottom: 1px solid var(--border);
 }
+
 .nav{
   max-width: 1200px;
   margin: 0 auto;
   padding: .75rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
 }
+
 .nav .logo{
   display: inline-flex;
   align-items: center;
@@ -40,64 +62,169 @@ header{
   text-decoration: none;
   color: var(--brand-text);
 }
+
 .nav ul{
   list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
   gap: 1rem;
+  flex: 1;                       /* take remaining space */
 }
+
 .nav a{
   color: var(--brand-text);
   text-decoration: none;
+  padding: .25rem .5rem;
+  border-radius: var(--radius-sm);
+  transition: color .15s ease, background-color .15s ease;
 }
-.nav a:hover{ color: var(--brand-primary); }
-.nav button{
-  border: none; background: var(--brand-accent); color: #fff;
-  padding: .5rem .75rem; border-radius: .4rem; cursor: pointer;
+.nav a:hover{
+  color: var(--brand-primary);
+  background: rgba(20, 88, 214, 0.08);
 }
 
-/* Hero */
+.nav button#themeToggle{
+  border: none;
+  background: var(--brand-accent);
+  color: #fff;
+  padding: .5rem .75rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: filter .15s ease;
+}
+.nav button#themeToggle:hover{ filter: brightness(0.95); }
+
+/* =========
+   Hero
+   ========= */
 #hero{
   max-width: 1200px;
   margin: 0 auto;
   padding: 3rem 1rem;
 }
-#hero h1{ font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 .75rem; }
+#hero h1{
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0 0 .75rem;
+}
+#hero p{
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
 .cta{
-  display:inline-block; margin-top:1rem; padding:.75rem 1rem;
-  background:var(--brand-primary); color:#fff; border-radius:.5rem; text-decoration:none;
+  display: inline-block;
+  margin-top: 1rem;
+  padding: .75rem 1rem;
+  background: var(--brand-primary);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: filter .15s ease, transform .08s ease;
 }
-.cta:hover{ opacity:.9; }
+.cta:hover{ filter: brightness(0.95); }
+.cta:active{ transform: translateY(1px); }
 
-/* Main sections */
-main{ max-width: 1200px; margin: 0 auto; padding: 1rem; }
+/* =========
+   Main Content
+   ========= */
+main{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
 section{ margin: 2rem 0; }
-.cards{
-  display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:1rem;
-}
-.card{ border:1px solid #eee; border-radius:.5rem; padding:1rem; }
 
-/* Docs search */
-.searchbar{ display:flex; gap:.5rem; margin:1rem 0; }
+/* Cards / grid */
+.cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.card{
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: #fff;
+}
+
+/* =========
+   Docs Search
+   ========= */
+.searchbar{
+  display: flex;
+  gap: .5rem;
+  margin: 1rem 0;
+}
 .searchbar input{
-  flex:1; padding:.6rem .75rem; border:1px solid #ccc; border-radius:.4rem;
+  flex: 1;
+  padding: .6rem .75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  color: var(--brand-text);
 }
 .searchbar button{
-  padding:.6rem .75rem; border:none; background:var(--brand-accent);
-  color:#fff; border-radius:.4rem; cursor:pointer;
+  padding: .6rem .75rem;
+  border: none;
+  background: var(--brand-accent);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: filter .15s ease;
 }
-.results{ display:grid; gap:.75rem; margin-top:1rem; }
-.result{ border:1px solid #eee; padding:.75rem; border-radius:.4rem; }
-.result a{ color: var(--brand-primary); text-decoration: none; }
+.searchbar button:hover{ filter: brightness(0.95); }
 
-/* Footer */
+.results{
+  display: grid;
+  gap: .75rem;
+  margin-top: 1rem;
+}
+.result{
+  border: 1px solid var(--border);
+  padding: .75rem;
+  border-radius: var(--radius-sm);
+  background: #fff;
+}
+.result a{
+  color: var(--brand-primary);
+  text-decoration: none;
+}
+
+/* =========
+   Footer
+   ========= */
 footer{
-  border-top:1px solid #eee; padding:1rem; text-align:center; color:#666;
+  border-top: 1px solid var(--border);
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  background: #fff;
 }
 
-@media (prefers-color-scheme: dark){
-  header{ background:#121212; border-color:#222; }
-  body{ background:#0b0b0b; color:#ddd; }
-  .card,.result{ border-color:#222; }
+/* =========
+   Dark Mode (via .dark on <html>)
+   ========= */
+html.dark header{ background: #121212; border-color: #222; }
+html.dark body{ background: #0b0b0b; color: #ddd; }
+html.dark .card,
+html.dark .result{ background: #121212; border-color: #222; }
+html.dark .nav a:hover{ background: rgba(0, 194, 168, 0.12); }
+html.dark footer{ background: #121212; border-color: #222; color: #aaa; }
+
+/* =========
+   Responsive tweaks
+   ========= */
+@media (max-width: 768px){
+  .nav{
+    flex-wrap: wrap;
+  }
+  .nav ul{
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .5rem .75rem;
+    margin-top: .5rem;
+  }
+  #hero{ padding: 2rem 1rem; }
 }
